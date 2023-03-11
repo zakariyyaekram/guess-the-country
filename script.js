@@ -3,6 +3,7 @@ const wordDiv = document.getElementById("word");
 const resultsDiv = document.getElementById("results");
 const dialogDiv = document.getElementById("dialog");
 const cardContainerDiv = document.getElementById("cardContainer");
+// variable COUNTRIES comes from countries-all.js
 
 let answer;
 let guess;
@@ -10,8 +11,7 @@ let guessesLeft;
 let country;
 
 function randomCountry() {
-  let randomIndex = Math.floor(Math.random() * COUNTRIES.length);
-  return COUNTRIES[randomIndex];
+  // TODO: pick a random country from the COUNTRIES variable and return it
 }
 
 function startGame() {
@@ -19,13 +19,14 @@ function startGame() {
 
   // Initialize the game state
   country = randomCountry();
-  answer = country.name.common.toUpperCase();
+  // TODO: what field of country to set 'answer' to?
   guess = [];
   guessesLeft = 10;
   console.log("the answer is:", answer);
   for (let i = 0; i < answer.length; i++) {
-    if (answer[i] < "A" || "Z" < answer[i]) {
-      guess.push(answer[i]);
+    // TODO: how to handle letters not on our keyboard?
+    if (answer[i] === " ") {
+      guess.push(" ");
     } else {
       guess.push("_");
     }
@@ -45,28 +46,17 @@ function showHint() {
 
   // create an image element for the flag
   let img = document.createElement("img");
-  img.src = country.flags.png;
+  // TODO: How to read image url from country data?
+  // img.src = ???
   img.style.border = "thin solid grey";
   card.appendChild(img);
 
   // create a paragraph element for info
   let p = document.createElement("p");
-  if (country.continents.length === 1) {
-    p.innerHTML += `Continent: ${country.continents[0]}<br>`;
-  } else {
-    p.innerHTML += `Continents: ${country.continents.join(", ")}<br>`;
-  }
-  p.innerHTML += `Region: ${country.region}<br>`;
-  p.innerHTML += `Subregion: ${country.subregion}<br>`;
-  p.innerHTML += `Population: ${country.population.toLocaleString()}<br>`;
-  p.innerHTML += `Area: ${country.area.toLocaleString()} km<sup>2</sup><br>`;
-  if (country.capital) {
-    if (country.capital.length === 1) {
-      p.innerHTML += `Capital: ${country.capital[0]}<br>`;
-    } else {
-      p.innerHTML += `Capitals: ${country.capital.join(", ")}<br>`;
-    }
-  }
+  // TODO: display other hints, e.g.
+  // Continent(s), population, area, capital(s), etc
+  // p.innerHTML += `Continent: ...<br>`;
+  // p.innerHTML += `Population: ...<br>`;
   card.appendChild(p);
 
   cardContainerDiv.appendChild(card); // create and add the card to the container
