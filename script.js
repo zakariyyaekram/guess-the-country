@@ -11,15 +11,20 @@ let guessesLeft;
 let country;
 
 function randomCountry() {
+  let randomCountryIndex = Math.floor( Math.random() * COUNTRIES.length);
+  return COUNTRIES[randomCountryIndex]
   // TODO: pick a random country from the COUNTRIES variable and return it
 }
 
 function startGame() {
+
   console.clear();
+  country = randomCountry();
 
   // Initialize the game state
   country = randomCountry();
   // TODO: what field of country to set 'answer' to?
+  answer = country.name.common.toUpperCase();
   guess = [];
   guessesLeft = 10;
   console.log("the answer is:", answer);
@@ -47,7 +52,7 @@ function showHint() {
   // create an image element for the flag
   let img = document.createElement("img");
   // TODO: How to read image url from country data?
-  // img.src = ???
+  img.src = country.flags.png
   img.style.border = "thin solid grey";
   card.appendChild(img);
 
@@ -57,6 +62,13 @@ function showHint() {
   // Continent(s), population, area, capital(s), etc
   // p.innerHTML += `Continent: ...<br>`;
   // p.innerHTML += `Population: ...<br>`;
+  p.innerHTML +=`Capital: ${country.capital[0]}<br>`;
+  p.innerHTML +=`Population: ${country.population}<br>`;
+  p.innerHTML +=`region: ${country.region}<br>`;
+  p.innerHTML +=`subregion: ${country.subregion}<br>`;
+  
+
+
   card.appendChild(p);
 
   cardContainerDiv.appendChild(card); // create and add the card to the container

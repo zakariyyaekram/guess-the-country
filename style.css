@@ -9,8 +9,7 @@ body {
 
 button {
   font-size: 2vw;
-}
-
+} 
 #word {
   white-space: pre; /* multiple whitespace is not collapsed */
   font-size: 4vw;
