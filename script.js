@@ -30,10 +30,10 @@ function startGame() {
   console.log("the answer is:", answer);
   for (let i = 0; i < answer.length; i++) {
     // TODO: how to handle letters not on our keyboard?
-    if (answer[i] === " ") {
-      guess.push(" ");
-    } else {
+    if (answer[i] >= "A" && answer[i] <= "Z") {
       guess.push("_");
+    } else {
+      guess.push(answer[i]);
     }
   }
 
@@ -64,8 +64,15 @@ function showHint() {
   // p.innerHTML += `Population: ...<br>`;
   p.innerHTML +=`Capital: ${country.capital[0]}<br>`;
   p.innerHTML +=`Population: ${country.population}<br>`;
-  p.innerHTML +=`region: ${country.region}<br>`;
-  p.innerHTML +=`subregion: ${country.subregion}<br>`;
+  p.innerHTML +=`Region: ${country.region}<br>`;
+  p.innerHTML +=`Subregion: ${country.subregion}<br>`;
+  p.innerHTML +=`Landlocked: ${country.landlocked}<br>`;
+  p.innerHTML +=`Borders: ${country.borders.join(', ')}<br>`;
+  p.innerHTML +=`Area: ${country.area}<br>`;
+  
+  
+  
+  
   
 
 
